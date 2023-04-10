@@ -31,22 +31,11 @@ public class Main {
             empleadosSet.add(new EmpleadoSet("Nahuel", "Silva", 59127, 3));
             empleadosSet.add(new EmpleadoSet("Agus", "Capo", 59126, 2));
 
+            System.out.println("\nLISTA DE EMPLEADOS NO REPETIDOS");
             //Iterator<EmpleadoSet> empleadoNR = empleadosSet.iterator();
             for (EmpleadoSet emSet : empleadosSet) {
-                if (!empleadosSet.add(emSet)) {
-                    empleadosSet.remove(emSet);
+                System.out.println(emSet.toString());
                 }
             }
 
-
-
-
-/*        System.out.println("LISTA DE EMPLEADOS NO REPETIDOS");
-        Iterator<EmpleadoSet> empleadosNoRepetidos = empleadosSet.iterator();
-        while(empleadosNoRepetidos.hasNext()){
-            EmpleadoSet empleadoNoRepetido = empleadosNoRepetidos.next();
-            System.out.println(empleadoNoRepetido.toString());
-        }*/
-
     }
-}

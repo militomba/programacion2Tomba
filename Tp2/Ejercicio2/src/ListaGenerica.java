@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import static java.util.Collections.shuffle;
 
 public class ListaGenerica<T extends Comparable<T>> {
     private ArrayList<T> listaEmpleados;
@@ -23,7 +24,7 @@ public class ListaGenerica<T extends Comparable<T>> {
         Collections.sort(listaEmpleados);
     }
     public void desordenarListaEmpleados(){
-        Collections.shuffle(listaEmpleados);
+        shuffle(listaEmpleados);
     }
     public void almacenarNuevoElemento(T elemento, int posicion){
         listaEmpleados.add(posicion, elemento);
