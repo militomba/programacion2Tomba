@@ -33,7 +33,7 @@ public class ListaGenerica<T extends Comparable<T>> {
     //7
     //agregar excepcion si el indice es mayor a la cantidad de elementos
     public void almacenarNuevoElemento(T elemento, int posicion) throws Excepciones{
-        System.out.println("\nAlmacenar un elemento en la posicion " + posicion + " de la lista");
+        System.out.println("\n6-Almacenar un elemento en la posicion " + posicion + " de la lista");
         if(posicion<0 || posicion>listaEmpleados.size()) {
             throw new Excepciones("\nLa posicion " + posicion + " esta fuera del rango de la lista");
         }
@@ -42,7 +42,7 @@ public class ListaGenerica<T extends Comparable<T>> {
     //8
     //agregar excepcion si el indice es mayor a la cantidad de elementos
     public T getEmpleadoCualquierPos(int posicion) throws  Excepciones{
-        System.out.println("\nObtener elemento en la posicion " + posicion + " de la lista");
+        System.out.println("\n7-Obtener elemento en la posicion " + posicion + " de la lista");
         if(posicion<0 || posicion>listaEmpleados.size()){
             throw new Excepciones("\nLa posicion " + posicion + " esta fuera del rango de la lista");
         }
@@ -68,8 +68,16 @@ public class ListaGenerica<T extends Comparable<T>> {
     return listaEmpleados.get(pos-1);
     }
     //11
-    public void eliminarElemento(int posicion){
-        System.out.println("Eliminar elemento de la posicion " + posicion + " de la lista");
+    public void eliminarElemento(int posicion) throws Excepciones{
+        if(0>posicion || posicion>listaEmpleados.size()) {
+            throw new Excepciones("La posicion no existe");
+        }
+        System.out.println("10-Eliminar elemento de la posicion " + posicion + " de la lista");
         listaEmpleados.remove(posicion);
+    }
+    //12
+    public void vaciarLista(){
+        listaEmpleados.clear();
+
     }
 }
