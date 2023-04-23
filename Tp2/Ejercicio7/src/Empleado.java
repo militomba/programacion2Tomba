@@ -52,43 +52,42 @@ public class Empleado {
         this.añosTrabajndo = añosTrabajndo;
     }
 
-    public static Empleado fromString(String empleadoString) throws Excepciones{
+    public static Empleado fromString(String empleadoString) throws Excepciones {
 
-    String[] campos = empleadoString.split(",\\s*");
-    String nombre = null;
-    String apellido = null;
-    String legajo = null;
-    int añosTrabajando = 0;
+        String[] campos = empleadoString.split(",\\s*");
+        int i = 0;
+        String nombre = null;
+        String apellido = null;
+        String legajo = null;
+        int añosTrabajando = 0;
+        for(String campo : campos) {
+            String[] partes = campo.split("=");
+            String nombreCampo = partes[0].toLowerCase().trim();
+            String valorCampo = partes[1].trim();
+            if (partes.length == 2) {
+                for (i = 0; i < 2; i++) {
+                    String datos = partes[i].split("=")[0];
+                    if (datos.equalsIgnoreCase("nombre")) {
+                        nombre = partes[i].split("=")[1];
+                    }else if(datos.equalsIgnoreCase("apellido")){
+                        apellido = partes[i].split("=")[1];
+                    }else if(datos.equalsIgnoreCase("legajo")){
+                        apellido = partes[i].split("=")[1];}
+                    else{
+                        añosTrabajando = Integer.parseInt(partes[i].split("=")[1]);
+                    }
 
-    for(String campo : campos){
-        String[] partes = campo.split("=");
-        if (partes.length!= 2){
-            throw new Excepciones("El campo " + campo+" debe tener el formato 'nombre=valor'");
+                }
+            }else{
+                throw new Excepciones("faltan campos");
+            }
         }
-        String nombreCampo = partes[0].toLowerCase().trim();
-        String valorCampo = partes[1].trim();
-        campo.equalsIgnoreCase(nombreCampo);
-        switch (nombreCampo) {
-            case "nombre":
-                nombre = valorCampo;
-                break;
-            case "apellido":
-                apellido = valorCampo;
-                break;
-            case "legajo":
-                legajo = valorCampo;
-                break;
-            case "añosTrabajando":
-                    añosTrabajando = Integer.parseInt(valorCampo);
 
-                break;
-            default:
-                throw new Excepciones("El campo " + campo + " es inválido. Los campos válidos son: nombre, apellido, legajo, añosTrabajando");
 
-        }
-    }
         return new Empleado(nombre, apellido, legajo, añosTrabajando);
     }
+
+
     @Override
     public String toString(){
         return ("\nNombre= "+ this.nombre) + ("\nApellido= "+this.apellido)+("\nLegajo= "+this.legajo)+("\nAños trabajando= "+this.añosTrabajndo);
